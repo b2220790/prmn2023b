@@ -10,7 +10,7 @@ public class PreExamDAO {
 
     public List<PreExam> selectPreExams(int lessThan) throws SQLException{
         List<PreExam> returning = new ArrayList<>();
-        String SQL = "select * from 学生情報 where 得点 > ?";
+        String SQL = "select * from 学生情報 where 得点 < ?";
 
         try (Connection conn = DriverManager.getConnection(URL,USER_NAME,USER_PASS);
              PreparedStatement stmt = conn.prepareStatement(SQL)){
@@ -37,6 +37,19 @@ public class PreExamDAO {
             PreparedStatement stmt = conn.prepareStatement(sql)){
             stmt.setString(1,gakusekiCode);
             n =  stmt.executeUpdate();
+        }
+        return n;
+    }
+    public int insertPreExam(String gakusekiCode, String familyName, String firstName, int point) throws SQLException{
+        String sql = "insert into 学生情報(学生コード,氏,名,得点) values (?,?,?,?)";
+        int n = 0;
+        try(Connection conn = DriverManager.getConnection(URL,USER_NAME,USER_PASS);
+            PreparedStatement stmt = conn.prepareStatement(sql)){
+            stmt.setString(1,gakusekiCode);
+            stmt.setString(2,familyName);
+            stmt.setString(3,firstName);
+            stmt.setInt(4,point);
+            n = stmt.executeUpdate();
         }
         return n;
     }
