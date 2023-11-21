@@ -16,6 +16,6 @@ public class PreExam {
     }
 
     public void print(){
-        System.out.println(gakusekiCode+"さんぽ"+point+"点");
+        System.out.println(gakusekiCode+"さんは"+point+"点");
     }
 }

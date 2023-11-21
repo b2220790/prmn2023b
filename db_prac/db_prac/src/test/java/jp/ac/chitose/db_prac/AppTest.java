@@ -1,4 +1,4 @@
-package jp.ac.chitose.db_prac;
+package db_prac.src.test.java.jp.ac.chitose.db_prac;
 
 import org.junit.jupiter.api.Test;
 
